@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  div.container
+    p 
+      Username #{profile.username} 
+      <br> Poke Storage: #{profile.poke_storage} 
+      <br> Item Storage: #{profile.item_storage}
+    a(href='/deleteAll') DELETE ALL
+    ul
+      each val, index in inventory
+        li= index
+          table.tablesorter.table
+            thead
+              tr
+                th Level
+                th HP
+                th CP
+                th Action
+            tbody
+              each p in val
+                tr(style='color:'+p.color)
+                  td=p.level
+                  td(value=p.ratio_hp, width="45%")
+                    table(width='100%')
+                      tr
+                        td #{p.min_hp} 
+                        td(width="90%")
+                          div.progress
+                            div.progress-bar(role="progressbar", aria-valuenow=p.ratio_hp, aria-valuemin="0", aria-valuemax="100", style="width:"+p.ratio_hp+"%") #{p.stamina_max} 
+                        td #{p.max_hp} 
+                  td(value=p.ratio_cp, width="45%")
+                    table(width='100%')
+                      tr 
+                        td #{p.min_cp} 
+                        td(width="90%")
+                          div.progress
+                            div.progress-bar(role="progressbar", aria-valuenow=p.ratio_cp, aria-valuemin="0", aria-valuemax="100", style="width:"+p.ratio_cp+"%") #{p.cp} 
+                        td #{p.max_cp}
+                  td 
+                    a(href='/delete/'+p.id.toString()) DELETE THIS SHIT

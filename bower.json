@@ -1,0 +1,14 @@
+{
+  "name": "pokemanaging",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "tablesorter": "*",
+    "bootstrap": "^3.3.7"
+  }
+}
